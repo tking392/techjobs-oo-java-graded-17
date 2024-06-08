@@ -18,7 +18,7 @@ public class Job {
     //  the 'id' field.
 
     public Job() {
-        this.id = nextId;
+        id = nextId;
         nextId++;
     }
 
@@ -36,13 +36,17 @@ public class Job {
 
     @Override
     public String toString() {
-        return  "\n" +
-                "ID: " + id + "\n" +
-                "Name: " + (name.isEmpty() ? "Data not available" : name) + "\n" +
-                "Employer: " + (employer.toString().isEmpty() ? "Data not available" : employer) + "\n" +
-                "Location: " + (location.toString().isEmpty() ? "Data not available" : location) + "\n" +
-                "Position Type: " + (positionType.toString().isEmpty() ? "Data not available" : positionType) + "\n" +
-                "Core Competency: " + (coreCompetency.toString().isEmpty() ? "Data not available" : coreCompetency) +
+
+        if(employer == null && location == null & positionType == null && coreCompetency == null) {
+            return "OOPS! This job does not seem to exist.";
+        }
+        return  System.lineSeparator() +
+                "ID: " + getId() +
+                "\nName: " + (name.isEmpty() ? "Data not available" : name) +
+                "\nEmployer: " + (employer.getValue().isEmpty() ? "Data not available" : employer) +
+                "\nLocation: " + (location.getValue().isEmpty() ? "Data not available" : location) +
+                "\nPosition Type: " + (positionType.getValue().isEmpty() ? "Data not available" : positionType) +
+                "\nCore Competency: " + (coreCompetency.getValue().isEmpty() ? "Data not available" : coreCompetency) +
                 System.lineSeparator();
     }
 
@@ -65,6 +69,10 @@ public class Job {
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
 
+
+    public int getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
