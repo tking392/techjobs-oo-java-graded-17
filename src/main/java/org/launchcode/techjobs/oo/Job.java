@@ -91,4 +91,7 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
+    public CoreCompetency PositionType() {
+        return null;
+    }
 }

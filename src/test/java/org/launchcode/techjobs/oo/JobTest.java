@@ -2,6 +2,12 @@ package org.launchcode.techjobs.oo;
 
 import org.junit.Test;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotEquals;
+import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.AssertJUnit.assertFalse;
+import static java.lang.System.lineSeparator;
+
 public class JobTest {
     //TODO: Create your unit tests here
 
@@ -14,13 +20,13 @@ public class JobTest {
 
     @Test //Test the Full Constructor
     public void testJobConstructorSetsAllFields() {
-        new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
                 new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
         assertEquals(job.getName(), "Product tester");
         assertEquals(job.getEmployer().getValue(), "ACME");
         assertEquals(job.getLocation().getValue(), "Desert");
-        assertEquals(job.PositionType().getValue(), "Quality control");
+        assertEquals(job.getPositionType().getValue(), "Quality control");
         assertEquals(job.getCoreCompetency().getValue(), "Persistence");
 
         assertTrue(job.getName() instanceof String);
