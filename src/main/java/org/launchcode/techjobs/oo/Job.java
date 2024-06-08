@@ -35,6 +35,18 @@ public class Job {
     //  match.
 
     @Override
+    public String toString() {
+        return  "\n" +
+                "ID: " + id + "\n" +
+                "Name: " + (name.isEmpty() ? "Data not available" : name) + "\n" +
+                "Employer: " + (employer.toString().isEmpty() ? "Data not available" : employer) + "\n" +
+                "Location: " + (location.toString().isEmpty() ? "Data not available" : location) + "\n" +
+                "Position Type: " + (positionType.toString().isEmpty() ? "Data not available" : positionType) + "\n" +
+                "Core Competency: " + (coreCompetency.toString().isEmpty() ? "Data not available" : coreCompetency) +
+                System.lineSeparator();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -46,6 +58,9 @@ public class Job {
     public int hashCode() {
         return Objects.hashCode(id);
     }
+
+
+
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
@@ -91,7 +106,4 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-    public CoreCompetency PositionType() {
-        return null;
-    }
 }

@@ -47,4 +47,16 @@ public class JobTest {
     }
 
 
+    @Test //Create First Test for toString
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        String firstChar = String.valueOf(job.toString().charAt(0));
+        String lastChar = String.valueOf(job.toString().charAt(job.toString().length() - 1));
+        assertEquals(firstChar, System.lineSeparator());
+        assertEquals(lastChar, System.lineSeparator());
+
+    }
+
 }
