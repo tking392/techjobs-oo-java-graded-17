@@ -16,7 +16,6 @@ public class JobTest {
         Job job1 = new Job();
         Job job2 = new Job();
         assertNotEquals(job1, job2);
-        Assert.assertNotEquals(job1, job2);
     }
 
     @Test //Test the Full Constructor
@@ -48,7 +47,8 @@ public class JobTest {
     }
 
 
-    @Test //Create First Test for toString
+    //Create First Test for toString
+    @Test
     public void testToStringStartsAndEndsWithNewLine() {
         Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
                 new PositionType("Quality control"), new CoreCompetency("Persistence"));
@@ -56,10 +56,46 @@ public class JobTest {
         Assert.assertEquals(job.toString().startsWith(lineSeparator()), true);
         Assert.assertEquals(job.toString().endsWith(lineSeparator()), true);
 
-//        String firstChar = String.valueOf(job.toString().charAt(0));
-//        String lastChar = String.valueOf(job.toString().charAt(job.toString().length() - 1));
-//        assertEquals(firstChar, lineSeparator());
-//        assertEquals(lastChar, lineSeparator());
+        // First draft of code before updating the Job class
+        // String firstChar = String.valueOf(job.toString().charAt(0));
+        // String lastChar = String.valueOf(job.toString().charAt(job.toString().length() - 1));
+        // assertEquals(firstChar, lineSeparator());
+        // assertEquals(lastChar, lineSeparator());
+
+    }
+
+
+    //Finish the TDD for toString
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType(
+                        "Quality control"), new CoreCompetency("Persistence"));
+        String testExpected = lineSeparator() +
+                "ID: 4\n" +
+                "Name: Product tester\n" +
+                "Employer: ACME\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Persistence" +
+                lineSeparator();
+        assertEquals(testExpected, job.toString());
+    }
+
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job job = new Job("", new Employer(""), new Location(""),
+                new PositionType(""), new CoreCompetency(""));
+        String testExpected = lineSeparator() +
+                "ID: 3\n" +
+                "Name: Data not available\n" +
+                "Employer: Data not available\n" +
+                "Location: Data not available\n" +
+                "Position Type: Data not available\n" +
+                "Core Competency: Data not available" +
+                lineSeparator();
+        assertEquals(testExpected, job.toString());
 
     }
 
