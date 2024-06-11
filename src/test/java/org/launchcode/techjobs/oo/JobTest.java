@@ -1,11 +1,11 @@
 package org.launchcode.techjobs.oo;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 import static org.testng.AssertJUnit.assertTrue;
-import static org.testng.AssertJUnit.assertFalse;
 import static java.lang.System.lineSeparator;
 
 public class JobTest {
@@ -16,6 +16,7 @@ public class JobTest {
         Job job1 = new Job();
         Job job2 = new Job();
         assertNotEquals(job1, job2);
+        Assert.assertNotEquals(job1, job2);
     }
 
     @Test //Test the Full Constructor
@@ -52,10 +53,13 @@ public class JobTest {
         Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
                 new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-        String firstChar = String.valueOf(job.toString().charAt(0));
-        String lastChar = String.valueOf(job.toString().charAt(job.toString().length() - 1));
-        assertEquals(firstChar, lineSeparator());
-        assertEquals(lastChar, lineSeparator());
+        Assert.assertEquals(job.toString().startsWith(lineSeparator()), true);
+        Assert.assertEquals(job.toString().endsWith(lineSeparator()), true);
+
+//        String firstChar = String.valueOf(job.toString().charAt(0));
+//        String lastChar = String.valueOf(job.toString().charAt(job.toString().length() - 1));
+//        assertEquals(firstChar, lineSeparator());
+//        assertEquals(lastChar, lineSeparator());
 
     }
 
